@@ -22,6 +22,7 @@
 "    -> vimgrep searching and cope displaying
 "    -> Spell checking
 "    -> Misc
+"    -> Search
 "    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -80,6 +81,10 @@ set ruler
 
 " Display line number
 set number
+
+" show cmd
+"set showcmd
+
 " Height of the command bar
 set cmdheight=2
 
@@ -245,6 +250,21 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+" Resize splits with arrow keys
+map <up> :res +5<CR>
+map <down> :res -5<CR>
+map <left> :vertical resize-5<CR>
+map <right> :vertical resize+5<CR>
+
+" Disabling the default s key
+"noremap , <nop>
+
+" Split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
+map <leader>k :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+map <leader>j :set splitbelow<CR>:split<CR>
+map <leader>h :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+map <leader>l :set splitright<CR>:vsplit<CR>
+
 " Specify the behavior when switching between buffers 
 try
   set switchbuf=useopen,usetab,newtab
@@ -327,6 +347,22 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Open the vimrc file anytime
+map <LEADER>rc :e ~/.vim/vimrc<CR>
+
+" Duplicate words
+map <LEADER>fd /\(\<\w\+\>\)\_s*\1
+
+" Press space twice to jump to the next '<++>' and edit it
+map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>ciw
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" No hightlight
+map <LEADER><CR> :nohlsearch<CR>
+noremap = nzz
+noremap - Nzz
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
