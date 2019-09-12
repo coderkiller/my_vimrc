@@ -1,13 +1,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
-"       Amir Salihefendic — @amix3k
+"       liu zhen — @coderkiller
 "
 " Awesome_version:
 "       Get this config, nice color schemes and lots of plugins!
 "
 "       Install the awesome version from:
 "
-"           https://github.com/amix/vimrc
+"           https://github.com/coderkiller/my_vimrc
 "
 " Sections:
 "    -> General
@@ -42,7 +42,7 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
+let mapleader = " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -78,6 +78,8 @@ endif
 "Always show current position
 set ruler
 
+" Display line number
+set number
 " Height of the command bar
 set cmdheight=2
 
@@ -133,13 +135,11 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable 
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+" Enable 256 colors palette 
+set t_Co=256
 
 try
-    colorscheme desert
+    colorscheme monokai
 catch
 endtry
 
@@ -204,8 +204,8 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -270,7 +270,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
-map 0 ^
+"map 0 ^
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
