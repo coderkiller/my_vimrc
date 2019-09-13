@@ -12,7 +12,17 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim_runtime/plugged')
 
+" Pretty Dress
+Plug 'vim-airline/vim-airline'
+Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'vim-airline/vim-airline-themes'
+
+" File navigation
+"
 Plug 'scrooloose/nerdtree',{ 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 
 " Initialize plugin system
 call plug#end()
@@ -25,6 +35,18 @@ call plug#end()
 "call pathogen#infect(s:vim_runtime.'/sources_non_forked/{}')
 "call pathogen#infect(s:vim_runtime.'/my_plugins/{}')
 "call pathogen#helptags()
+
+""""""""""""""""""""""""""""""
+" => airline plugin
+""""""""""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+
+""""""""""""""""""""""""""""""
+" => airline theme plugin
+""""""""""""""""""""""""""""""
+"let g:airline_theme='molokai'
 
 """"""""""""""""""""""""""""""
 " => bufExplorer plugin

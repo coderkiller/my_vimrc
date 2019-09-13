@@ -334,7 +334,7 @@ map <leader>x :e ~/buffer.md<cr>
 map <leader>pp :setlocal paste!<cr>
 
 " Open the vimrc file anytime
-map <LEADER>rc :e ~/.vim/vimrc<CR>
+"map <LEADER>rc :e ~/.vimrc<CR>
 
 " Duplicate words
 map <LEADER>fd /\(\<\w\+\>\)\_s*\1
@@ -345,8 +345,8 @@ map <LEADER>fd /\(\<\w\+\>\)\_s*\1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " No hightlight
 map <LEADER><CR> :nohlsearch<CR>
-noremap = nzz
-noremap - Nzz
+"noremap = nzz
+"noremap - Nzz
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

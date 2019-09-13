@@ -37,17 +37,23 @@ map <left> :vertical resize-5<CR>
 map <right> :vertical resize+5<CR>
 
 " Split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-map <leader>k :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-map <leader>j :set splitbelow<CR>:split<CR>
-map <leader>h :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-map <leader>l :set splitright<CR>:vsplit<CR>
+map <leader>nk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
+map <leader>nj :set splitbelow<CR>:split<CR>
+map <leader>nh :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
+map <leader>nl :set splitright<CR>:vsplit<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>e :e! ~/.vim_runtime/my_configs.vim<cr>
-autocmd! bufwritepost ~/.vim_runtime/my_configs.vim source ~/.vim_runtime/my_configs.vim
+map <leader>e :e! ~/.vimrc<cr>
+autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 
+" Reload vimrc configs
+"noremap <learder>R :call CompileBuildrrr()<CR>
+"func! CompileBuildrrr()
+"  exec "w"
+"  exec "source $MYVIMRC"
+"endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Press space twice to jump to the next '<++>' and edit it
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
