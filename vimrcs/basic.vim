@@ -169,9 +169,9 @@ set ffs=unix,dos,mac
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
+"set nobackup
+"set nowb
+"set noswapfile
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -250,20 +250,6 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Resize splits with arrow keys
-map <up> :res +5<CR>
-map <down> :res -5<CR>
-map <left> :vertical resize-5<CR>
-map <right> :vertical resize+5<CR>
-
-" Disabling the default s key
-"noremap , <nop>
-
-" Split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
-map <leader>k :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
-map <leader>j :set splitbelow<CR>:split<CR>
-map <leader>h :set nosplitright<CR>:vsplit<CR>:set splitright<CR>
-map <leader>l :set splitright<CR>:vsplit<CR>
 
 " Specify the behavior when switching between buffers 
 try
@@ -353,8 +339,6 @@ map <LEADER>rc :e ~/.vim/vimrc<CR>
 " Duplicate words
 map <LEADER>fd /\(\<\w\+\>\)\_s*\1
 
-" Press space twice to jump to the next '<++>' and edit it
-map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>ciw
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
