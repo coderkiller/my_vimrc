@@ -18,10 +18,30 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'vim-airline/vim-airline-themes'
 
 " File navigation
-"
 Plug 'scrooloose/nerdtree',{ 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Symble index
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
+  
+" Symble index
+Plug 'ycm-core/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" Preview
+Plug 'skywind3000/vim-preview'
+
+" Search
+Plug 'mileszs/ack.vim'
+
+" Object
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-function', { 'for':['c', 'h', 'cc','cpp', 'vim', 'java'] }
+Plug 'sgur/vim-textobj-parameter'
 
 
 " Initialize plugin system
@@ -49,6 +69,71 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 "let g:airline_theme='molokai'
 
 """"""""""""""""""""""""""""""
+" => Ack plugin
+""""""""""""""""""""""""""""""
+" Shortcuts
+" ?    a quick summary of these keys, repeat to close
+" o    to open (same as Enter)
+" O    to open and close the quickfix window
+" go   to preview file, open but maintain focus on ack.vim results
+" t    to open in new tab
+" T    to open in new tab without moving to it
+" h    to open in horizontal split
+" H    to open in horizontal split, keeping focus on the results
+" v    to open in vertical split
+" gv   to open in vertical split, keeping focus on the results
+" q    to close the quickfix window
+
+""""""""""""""""""""""""""""""
+" => Gutentags
+""""""""""""""""""""""""""""""
+" gutentags 搜索工程目录的标志，当前文件路径向上递归直到碰到这些文件/目录名
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+" 同时开启 ctags 和 gtags 支持：
+let g:gutentags_modules = []
+if executable('ctags')
+    let g:gutentags_modules += ['ctags']
+endif
+if executable('gtags-cscope') && executable('gtags')
+    let g:gutentags_modules += ['gtags_cscope']
+endif
+" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+" 如果使用 universal ctags 需要增加下面一行
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+" 禁用 gutentags 自动加载 gtags 数据库的行为
+let g:gutentags_auto_add_gtags_cscope = 0
+" change focus to quickfix window after search (optional).
+let g:gutentags_plus_switch = 1
+
+""""""""""""""""""""""""""""""
+" => Vim Preview
+""""""""""""""""""""""""""""""
+noremap <silent> <leader>v :PreviewTag <C-R><C-W><cr>
+autocmd FileType qf nnoremap <silent><buffer> p :PreviewQuickfix<cr>
+autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
+"noremap <silent> <leader> :PreviewScroll -1<cr>
+"noremap <silent> <leader> :PreviewScroll +1<cr>
+"inoremap <silent> <leader> <c-\><c-o>:PreviewScroll -1<cr>
+"inoremap <silent> <leader> <c-\><c-o>:PreviewScroll +1<cr>
+
+""""""""""""""""""""""""""""""
+" => Object
+""""""""""""""""""""""""""""""
+
+" i, 和 a, ：参数对象，写代码一半在修改，现在可以用 di, 或 ci, 一次性删除/改写当前参数
+
+" ii 和 ai ：缩进对象，同一个缩进层次的代码，可以用 vii 选中，dii / cii 删除或改写
+ 
+" if 和 af ：函数对象，可以用 vif / dif / cif 来选中/删除/改写函数的内容
+
+""""""""""""""""""""""""""""""
 " => bufExplorer plugin
 """"""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0
@@ -62,7 +147,7 @@ map <leader>o :BufExplorer<cr>
 " => MRU plugin
 """"""""""""""""""""""""""""""
 let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
+"map <leader>f :MRU<CR>
 
 
 """"""""""""""""""""""""""""""

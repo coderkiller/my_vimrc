@@ -131,7 +131,7 @@ endif
 
 
 " Add a bit extra margin to the left
-set foldcolumn=1
+"set foldcolumn=1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -222,13 +222,19 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+"map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bd :Bclose<cr>
+
+command! BufOnly execute '%bdelete|edit #|normal `"'
+map <leader>bo :BufOnly<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
+map <leader>H :bfirst<cr>
+map <leader>L :blast<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -338,7 +344,8 @@ map <leader>pp :setlocal paste!<cr>
 
 " Duplicate words
 map <LEADER>fd /\(\<\w\+\>\)\_s*\1
-
+" Set ctags
+set tags=./.tags;,.tags
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
