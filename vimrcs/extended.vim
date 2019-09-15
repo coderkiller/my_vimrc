@@ -23,6 +23,13 @@ elseif has("unix")
     set gfn=Monospace\ 11
 endif
 
+if has("win16") || has("win32")
+    set lines=52 columns=108 
+    "设置初始界面大小
+endif
+
+
+
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
 set guioptions-=r
@@ -60,7 +67,8 @@ autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Press space twice to jump to the next '<++>' and edit it
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>ciw
+"map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>ciw
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on 
@@ -195,3 +203,22 @@ endfunc
 func! CurrentFileDir(cmd)
     return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Markdown 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
+autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
+autocmd Filetype markdown inoremap ,s ~~~~ <++><Esc>F~hi
+autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
+autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
+autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
+autocmd Filetype markdown inoremap ,p ![](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
+autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
+autocmd Filetype markdown inoremap ,l --------<Enter>
