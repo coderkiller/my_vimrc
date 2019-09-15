@@ -28,7 +28,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
   
 " Symble index
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'ycm-core/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 " Preview
 Plug 'skywind3000/vim-preview'
