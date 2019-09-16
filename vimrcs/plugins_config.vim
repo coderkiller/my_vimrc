@@ -210,6 +210,10 @@ autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 "inoremap <silent> <leader> <c-\><c-o>:PreviewScroll +1<cr>
 
 """"""""""""""""""""""""""""""
+" => Ctags
+""""""""""""""""""""""""""""""
+noremap <leader>g g<C-]>
+""""""""""""""""""""""""""""""
 " => Object
 """"""""""""""""""""""""""""""
 
