@@ -212,6 +212,8 @@ autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 """"""""""""""""""""""""""""""
 " => Ctags
 """"""""""""""""""""""""""""""
+" Set ctags 
+set tags=./.tags;,.tags
 noremap <leader>g g<C-]>
 """"""""""""""""""""""""""""""
 " => Object
