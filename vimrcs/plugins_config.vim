@@ -21,7 +21,10 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/nerdtree',{ 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Symble index
 Plug 'ludovicchabant/vim-gutentags'
@@ -37,6 +40,7 @@ Plug 'skywind3000/vim-preview'
 Plug 'mileszs/ack.vim'
 
 " Object
+Plug 'tpope/vim-surround'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
@@ -45,6 +49,9 @@ Plug 'sgur/vim-textobj-parameter'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+" Git
+Plug 'tpope/vim-fugitive'
 
 
 " Initialize plugin system
@@ -226,22 +233,27 @@ noremap <leader>g g<C-]>
 " if 和 af ：函数对象，可以用 vif / dif / cif 来选中/删除/改写函数的内容
 
 """"""""""""""""""""""""""""""
-" => bufExplorer plugin
+" => Fzf
 """"""""""""""""""""""""""""""
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-let g:bufExplorerFindActive=1
-let g:bufExplorerSortBy='name'
-map <leader>o :BufExplorer<cr>
-
+"let g:fzf_command_prefix = 'Fzf'
 
 """"""""""""""""""""""""""""""
-" => MRU plugin
+" => LeaderF
 """"""""""""""""""""""""""""""
-let MRU_Max_Entries = 400
-"map <leader>f :MRU<CR>
-
-
+let g:Lf_ShortcutF = '<c-f>'
+let g:Lf_ShortcutB = '<c-b>'
+noremap <c-m> :LeaderfMru<cr>
+noremap <leader>f :LeaderfFunction!<cr>
+noremap <c-b> :LeaderfBuffer<cr>
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_WorkingDirectoryMode = 'Ac'
+let g:Lf_WindowHeight = 0.30
+let g:Lf_CacheDirectory = expand('~/.vim/cache')
+let g:Lf_ShowRelativePath = 0
+let g:Lf_HideHelp = 1
+let g:Lf_StlColorscheme = 'monokai'
+let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 """"""""""""""""""""""""""""""
 " => YankStack
 """"""""""""""""""""""""""""""
@@ -254,15 +266,14 @@ nmap <c-n> <Plug>yankstack_substitute_newer_paste
 """"""""""""""""""""""""""""""
 " => CTRL-P
 """"""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
-
-let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
-
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+"  \ 'file': '\v\.(exe|so|dll)$',
+"  \ 'link': 'some_bad_symbolic_links',
+"  \ }
 
 """"""""""""""""""""""""""""""
 " => ZenCoding
@@ -303,11 +314,11 @@ map <leader>nf :NERDTreeFind<cr>
 let g:multi_cursor_use_default_mapping=0
 
 " Default mapping
-let g:multi_cursor_start_word_key      = '<C-s>'
-let g:multi_cursor_select_all_word_key = '<A-s>'
-let g:multi_cursor_start_key           = 'g<C-s>'
-let g:multi_cursor_select_all_key      = 'g<A-s>'
-let g:multi_cursor_next_key            = '<C-s>'
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
@@ -317,8 +328,8 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " => surround.vim config
 " Annotate strings with gettext 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vmap Si S(i_<esc>f)
-au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+"vmap Si S(i_<esc>f)
+"au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
