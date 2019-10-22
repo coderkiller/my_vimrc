@@ -123,7 +123,7 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-set belloff=all
+"set belloff=all
 
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
@@ -183,10 +183,11 @@ set expandtab
 
 " Be smart when using tabs ;)
 set smarttab
+set smartindent
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr

@@ -21,7 +21,6 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/nerdtree',{ 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -29,6 +28,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " Symble index
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'skywind3000/gutentags_plus'
+Plug 'CatKang/taglist.vim'
   
 " Symble index
 "Plug 'ycm-core/YouCompleteMe'
@@ -47,8 +47,10 @@ Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-function', { 'for':['c', 'h', 'cc','cpp', 'vim', 'java'] }
 Plug 'sgur/vim-textobj-parameter'
 
+Plug 'Raimondi/delimitMate' "自动补全括号引号 
+"Plug ' 
 " Markdown
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -150,6 +152,20 @@ nmap <leader>m <Plug>MarkdownPreview
 "call pathogen#helptags()
 
 """"""""""""""""""""""""""""""
+" => Load taglist
+""""""""""""""""""""""""""""""
+let Tlist_Ctags_Cmd='ctags'
+let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只显示当前文件的
+let Tlist_WinWidth =30                   "设置taglist的宽度
+let Tlist_Exit_OnlyWindow=1             "如果taglist窗口是最后一个窗口，则退出vim
+let Tlist_Use_Left_Window=1           "在右侧窗口中显示taglist窗口
+let Tlist_Auto_Open=1
+let Tlist_Auto_Update=1
+let Tlist_Sort_Type="name"
+let Tlist_Process_File_Always=1         "taglist始终解析文件中的tag，不管taglist是否打开
+"let Tlist_Enable_Fold_Column=1
+nnoremap <silent> <F2> :TlistToggle<CR>
+""""""""""""""""""""""""""""""
 " => airline plugin
 """"""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
@@ -222,6 +238,7 @@ autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 " Set ctags 
 set tags=./.tags;,.tags
 noremap <leader>g g<C-]>
+noremap <leader>t :tselect<cr>
 """"""""""""""""""""""""""""""
 " => Object
 """"""""""""""""""""""""""""""
@@ -243,7 +260,7 @@ noremap <leader>g g<C-]>
 let g:Lf_ShortcutF = '<c-f>'
 let g:Lf_ShortcutB = '<c-b>'
 noremap <c-m> :LeaderfMru<cr>
-noremap <leader>f :LeaderfFunction!<cr>
+"noremap <leader>f :LeaderfFunction!<cr>
 noremap <c-b> :LeaderfBuffer<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
