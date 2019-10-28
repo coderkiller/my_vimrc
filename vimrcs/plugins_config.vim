@@ -159,7 +159,7 @@ let Tlist_Show_One_File=1               "不同时显示多个文件的tag，只
 let Tlist_WinWidth =30                   "设置taglist的宽度
 let Tlist_Exit_OnlyWindow=1             "如果taglist窗口是最后一个窗口，则退出vim
 let Tlist_Use_Left_Window=1           "在右侧窗口中显示taglist窗口
-let Tlist_Auto_Open=1
+let Tlist_Auto_Open=0
 let Tlist_Auto_Update=1
 let Tlist_Sort_Type="name"
 let Tlist_Process_File_Always=1         "taglist始终解析文件中的tag，不管taglist是否打开
@@ -238,7 +238,7 @@ autocmd FileType qf nnoremap <silent><buffer> P :PreviewClose<cr>
 " Set ctags 
 set tags=./.tags;,.tags
 noremap <leader>g g<C-]>
-noremap <leader>t :tselect<cr>
+noremap <leader>r :tselect<cr>
 """"""""""""""""""""""""""""""
 " => Object
 """"""""""""""""""""""""""""""
@@ -259,7 +259,7 @@ noremap <leader>t :tselect<cr>
 """"""""""""""""""""""""""""""
 let g:Lf_ShortcutF = '<c-f>'
 let g:Lf_ShortcutB = '<c-b>'
-noremap <c-m> :LeaderfMru<cr>
+"noremap <c-m> :LeaderfMru<cr>
 "noremap <leader>f :LeaderfFunction!<cr>
 noremap <c-b> :LeaderfBuffer<cr>
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
