@@ -31,6 +31,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" clu clear jumplist
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -93,7 +94,7 @@ set hid
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+"set whichwrap+=<,>,h,l
 
 " Ignore case when searching
 set ignorecase
@@ -146,6 +147,7 @@ set t_Co=256
 
 try
     colorscheme monokai
+    "colorscheme desert
 catch
 endtry
 
@@ -277,7 +279,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -345,7 +347,7 @@ map <leader>pp :setlocal paste!<cr>
 "map <LEADER>rc :e ~/.vimrc<CR>
 
 " Duplicate words
-map <LEADER>fd /\(\<\w\+\>\)\_s*\1
+"map <LEADER>fd /\(\<\w\+\>\)\_s*\1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search

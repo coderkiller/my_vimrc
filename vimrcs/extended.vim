@@ -41,10 +41,10 @@ set guioptions-=L
 " => quick config windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Resize splits with arrow keys
-map <up> :res +5<CR>
-map <down> :res -5<CR>
-map <left> :vertical resize-5<CR>
-map <right> :vertical resize+5<CR>
+"map <up> :res +5<CR>
+"map <down> :res -5<CR>
+"map <left> :vertical resize-5<CR>
+"map <right> :vertical resize+5<CR>
 
 " Split the screens to up (horizontal), down (horizontal), left (vertical), right (vertical)
 map <leader>nk :set nosplitbelow<CR>:split<CR>:set splitbelow<CR>
@@ -74,13 +74,16 @@ autocmd! bufwritepost ~/.vimrc source ~/.vimrc
 " => Turn persistent undo on 
 "    means that you can undo even when you close a buffer/VIM
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-try
-    set undodir=~/.vim_runtime/temp_dirs/undodir
-    set undofile
-catch
-endtry
+"try
+"    set undodir=~/.vim_runtime/temp_dirs/undodir
+"    set undofile
+"catch
+"endtry
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Out of the brackets 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"inoremap ,, <ESC>la 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
